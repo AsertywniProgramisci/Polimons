@@ -1,0 +1,9 @@
+folder walka zawiera pierwsz¹ wersjê symulacji walki
+
+W folderze Test Walki znajduje siê natomiast v2 symulacji walki, w której jest rozpoznawany typ sworka 
+i zwiêkszane s¹ jego statystyki. 
+Opis wyœwietlenia
+
+Wpierw s¹ wyœwietlane bazowe statystyki polimona A i B. Nastêpnie jest wyœwietlana wartoœæ ca³kowitego dmg z jednej tury,
+a na koñcu ca³kowita wartoœæ obrony z tej samej tury. 
+
