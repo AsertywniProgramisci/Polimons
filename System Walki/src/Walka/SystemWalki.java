@@ -3,12 +3,18 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package test.walki;
+package Walka;
 
 import java.util.Random;
 
 public class SystemWalki 
-{        
+{
+    public static void CheckType ()
+    {
+        
+    }
+    
+    
     public static void walka2(Polimons A,Polimons B)
     {
         Random rand = new Random();
@@ -20,6 +26,7 @@ public class SystemWalki
         
         int bonusA=0; //Premia do statów dla A przy walce z róznymi typami
         int bonusB=0; //Premia do statów dla B przy walce z róznymi typami
+        
         int player=0; // Zmienna do określania kolejności ruchów
         
         switch(A.GetTypeOf())
@@ -31,7 +38,7 @@ public class SystemWalki
                         bonusA=2;
                         bonusB=0;
                     }
-                    else if(B.GetTypeOf().contains("water")) // Vs wodnemu straci 1 bonusu
+                    else if(B.GetTypeOf().contains("water")) // Vs wodnemu straci 2 bonusu
                     {
                         bonusA=0;
                         bonusB=2;
@@ -50,7 +57,7 @@ public class SystemWalki
                         bonusA=0;
                         bonusB=2;
                     }
-                    else if(B.GetTypeOf().contains("fire")) // Vs ognistemu dostaje 1 bonusu
+                    else if(B.GetTypeOf().contains("fire")) // Vs ognistemu dostaje 2 bonusu
                     {
                         bonusA=2;
                         bonusB=0;
@@ -83,11 +90,11 @@ public class SystemWalki
             }
         
         do{
-            damageA = (rand.nextInt(A.GetAttack() + bonusA + 1) + 0);
-            damageB = (rand.nextInt(B.GetAttack() + bonusB + 1) + 0);
+            damageA = (rand.nextInt(A.GetAttack() + A.GetStats() + bonusA + 1) + 0);
+            damageB = (rand.nextInt(B.GetAttack() + B.GetStats() + bonusB + 1) + 0);
             
-            defenceA = (rand.nextInt(A.GetDefence()+1) + 0) ;
-            defenceB = (rand.nextInt(B.GetDefence()+1) + 0) ;
+            defenceA = (rand.nextInt(A.GetDefence()+ A.GetStats() +1) + 0) ;
+            defenceB = (rand.nextInt(B.GetDefence()+ B.GetStats() +1) + 0) ;
             
             if(player == 0)
             {
@@ -97,7 +104,8 @@ public class SystemWalki
                 {
                     A.SetHp( A.GetHP()- (damageB-defenceA));
                     player = 1;
-                    //System.out.println("dmgB = " + damageB + " pozostale hp A =" +A.GetHP());
+                    // Funckja wypisuje wszystkie dmg
+                    //System.out.println("dmgB = " + damageB + " pozostale hp A =" +A.GetHP()); 
                 }
             }
             else 
@@ -108,33 +116,42 @@ public class SystemWalki
                 {
                     B.SetHp( B.GetHP()- (damageA-defenceB) );
                     player = 0;
+                    // Funckja wypisuje wszystkie dmg
                     //System.out.println("dmgA = " + damageA + " pozostale hp B =" +B.GetHP());
                 }
             }
         }while((A.GetHP() > 0 && B.GetHP() > 0));
-        System.out.println();
-        System.out.println("Dmg A: " + damageA);
-        System.out.println("Dmg B: " + damageB);
-        System.out.println();
-        System.out.println("Deff A: " + defenceA);
-        System.out.println("Deff B: " + defenceB);
+        //System.out.println();
+        //System.out.println("Dmg A: " + damageA);
+        //System.out.println("Dmg B: " + damageB);
+        //System.out.println();
+        //System.out.println("Deff A: " + defenceA);
+        //System.out.println("Deff B: " + defenceB);
         
         if(A.GetHP() > 0)
         {
                 System.out.println("\nWalkę wygrał polimon A, będący typem: " + A.GetTypeOf());
                 System.out.println("Walkę przegrał B, będący typem: " + B.GetTypeOf());
+                A.SetExp(10);
+                B.SetExp(0);
         }       
         else
         {
             System.out.println("\nWalkę wygrał polimon B, będący typem: " + B.GetTypeOf());
             System.out.println("Walkę przegrał A, będący typem: " + A.GetTypeOf());
+            A.SetExp(0);
+            B.SetExp(10);
         }
         
         System.out.println("\nPozostałe HP polimona A to: " + A.GetHP());
         System.out.println("Pozostałe HP polimona B to: " + B.GetHP());
+        
+        System.out.println("\nPoziom statystyk A wynosi: " + A.GetStats());
+        System.out.println("Poziom statystyk B wynosi: " + B.GetStats());
     }
 
-    public static void main(String[] args) {
+    public static void main(String[] args) 
+    {
         Polimons A = new Polimons();
         Polimons B = new Polimons();
         
@@ -151,6 +168,17 @@ public class SystemWalki
         System.out.println("HP: " + B.GetHP());
         
         walka2(A,B);
+        walka2(A,B);
+        walka2(A,B);
+        walka2(A,B);
+        walka2(A,B);
+        walka2(A,B);
+        walka2(A,B);
+        walka2(A,B);
+        walka2(A,B);
+        walka2(A,B);
+        
+        
     }
     
 }
