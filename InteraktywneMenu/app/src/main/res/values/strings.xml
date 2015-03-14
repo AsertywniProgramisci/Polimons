@@ -1,0 +1,9 @@
+<resources>
+    <string name="app_name">InteraktywneMenu</string>
+    <string name="Send">YOLO Przycisk</string> /** String do wypisania tekstu na butonie
+    <string name="EnterText">Wpisz tekst a coś się stanie</string> /** Stringa do wypisaniu tekstu w polu tekstowym
+    <string name="action_settings">Settings</string>
+    <string name="title_activity_display_message">MyOwnMessage</string>
+
+    <string name="hello_world">Hello world!</string>
+</resources>
